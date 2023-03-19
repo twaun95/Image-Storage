@@ -1,6 +1,6 @@
 plugins {
     id("com.android.application")
-//    id("dagger.hilt.android.plugin")
+    id("dagger.hilt.android.plugin")
     kotlin("android")
     kotlin("kapt")
 }
@@ -52,8 +52,8 @@ dependencies {
     implementation(AndroidX.VIEW_MODEL)
 
     // DI
-//    implementation(Google.HILT_ANDROID)
-//    kapt(Google.HILT_ANDROID_COMPILER)
+    implementation(Google.HILT_ANDROID)
+    kapt(Google.HILT_ANDROID_COMPILER)
 
     // Test
     testImplementation(UnitTest.JUNIT)
