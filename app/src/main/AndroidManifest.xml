@@ -3,6 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.twaun95.imagestorage">
 
+    <uses-permission android:name="android.permission.INTERNET"/>
+
     <application
         android:name=".HiltApplication"
         android:allowBackup="true"

@@ -29,6 +29,7 @@ object UnitTest {
 
 object AndroidTest {
     const val ANDROID_JUNIT               = "junit:junit:${Versions.ANDROID_JUNIT}"
+    const val ANDROIDX_JUNIT               = "androidx.test.ext:junit-ktx:${Versions.ANDROIDX_JUNIT}"
     const val ESPRESSO_CORE               = "androidx.test.espresso:espresso-core:${Versions.ESPRESSO_CORE}"
 }
 
