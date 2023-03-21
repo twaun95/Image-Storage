@@ -5,6 +5,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import com.twaun95.presentation.R
 import com.twaun95.presentation.adapter.SearchListAdapter
+import com.twaun95.presentation.adapter.VideoListAdapter
 import com.twaun95.presentation.base.BaseFragment
 import com.twaun95.presentation.databinding.FragmentSearchBinding
 import com.twaun95.presentation.ui.MainActivityViewModel
@@ -19,6 +20,7 @@ class SearchFragment : BaseFragment<FragmentSearchBinding, SearchFragmentViewMod
     private val activityVM by activityViewModels<MainActivityViewModel>()
 
     private val searchAdapter by lazy { SearchListAdapter() }
+    private val videoAdapter by lazy { VideoListAdapter() }
 
     override fun initView() {
         super.initView()
@@ -32,7 +34,8 @@ class SearchFragment : BaseFragment<FragmentSearchBinding, SearchFragmentViewMod
     override fun setEvent() {
         super.setEvent()
         binding.buttonSearch.setOnClickListener {
-            fragmentVM.getSearchList()
+//            fragmentVM.getSearchList()
+            fragmentVM.getVideoList()
         }
     }
 
@@ -45,11 +48,19 @@ class SearchFragment : BaseFragment<FragmentSearchBinding, SearchFragmentViewMod
                 searchAdapter.submitList(it)
             }
             .launchIn(this.lifecycleScope)
+
+        fragmentVM.videoList
+            .onEach {
+                Timber.d("viewModel ${it.size}")
+                videoAdapter.submitList(it)
+            }
+            .launchIn(this.lifecycleScope)
     }
 
     private fun setRecyclerView() {
         binding.recyclerViewSearch.apply {
-            adapter = searchAdapter
+//            adapter = searchAdapter
+            adapter = videoAdapter
         }
     }
 

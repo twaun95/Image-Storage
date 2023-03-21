@@ -2,6 +2,7 @@ package com.twaun95.domain.di
 
 import com.twaun95.domain.repository.SearchRepository
 import com.twaun95.domain.usecase.GetSearchUseCase
+import com.twaun95.domain.usecase.GetVideosUseCase
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -16,5 +17,11 @@ object UseCaseModule {
     @Provides
     fun provideGetSearch(repository: SearchRepository): GetSearchUseCase {
         return GetSearchUseCase(repository)
+    }
+
+    @Singleton
+    @Provides
+    fun provideGetVideos(repository: SearchRepository): GetVideosUseCase {
+        return GetVideosUseCase(repository)
     }
 }

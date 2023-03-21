@@ -57,12 +57,6 @@ object NetworkModule {
             .build()
     }
 
-//    @Provides
-//    @Singleton
-//    fun getAPIKey(): APIKey {
-//        return APIKey(key = BuildConfig.API_KEY)
-//    }
-
     @Provides
     @Singleton
     fun provideSearchService(retrofit: Retrofit): SearchService {

@@ -1,4 +1,4 @@
-package com.twaun95.data.model
+package com.twaun95.data.model.image
 
 import com.twaun95.domain.model.ImageEntity
 
