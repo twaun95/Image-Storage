@@ -8,6 +8,7 @@ import com.twaun95.presentation.adapter.SearchListAdapter
 import com.twaun95.presentation.adapter.VideoListAdapter
 import com.twaun95.presentation.base.BaseFragment
 import com.twaun95.presentation.databinding.FragmentSearchBinding
+import com.twaun95.presentation.dialog.CommonDialog
 import com.twaun95.presentation.ui.MainActivityViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.launchIn
@@ -35,7 +36,18 @@ class SearchFragment : BaseFragment<FragmentSearchBinding, SearchFragmentViewMod
         super.setEvent()
         binding.buttonSearch.setOnClickListener {
 //            fragmentVM.getSearchList()
-            fragmentVM.getVideoList()
+//            fragmentVM.getVideoList()
+            CommonDialog.show(
+                parentFragmentManager,
+                viewLifecycleOwner,
+                "제목",
+                "내용",
+                true,
+                "취소",
+                {},
+                "예",
+                {}
+            )
         }
     }
 
