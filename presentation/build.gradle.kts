@@ -58,4 +58,8 @@ dependencies {
 
     implementation(Libraries.TIMBER)
     implementation(Libraries.LOTTIE)
+
+    implementation(Libraries.GLIDE)
+    implementation(Libraries.GLIDE_COMPILER)
+    implementation(Libraries.GLIDE_OKHTTP)
 }

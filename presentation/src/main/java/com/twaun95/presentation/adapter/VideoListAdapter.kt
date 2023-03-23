@@ -5,7 +5,9 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.twaun95.domain.model.VideoEntity
+import com.twaun95.presentation.R
 import com.twaun95.presentation.databinding.ItemSearchBinding
 
 class VideoListAdapter(
@@ -38,7 +40,7 @@ class VideoListAdapter(
         fun bind(
             data: VideoEntity
         ) {
-            binding.textTest.text = data.title
+            binding.data = data
         }
     }
 

@@ -38,7 +38,7 @@ class SearchListAdapter(
         fun bind(
             data: ImageEntity
         ) {
-            binding.data = data
+//            binding.data = data
         }
     }
 

@@ -1,25 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="data"
-            type="com.twaun95.domain.model.ImageEntity" />
+            type="com.twaun95.domain.model.VideoEntity" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:background="@color/cardview_dark_background"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@color/cardview_dark_background">
+
+        <ImageView
+            android:id="@+id/image_item"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            bind:imageUrl="@{data.thumbnail}" />
 
         <TextView
-            android:id="@+id/text_test"
+            android:id="@+id/text_title"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:textColor="@color/white"
+            android:layout_height="wrap_content"
             android:gravity="center"
-            app:layout_constraintTop_toTopOf="parent"/>
+            android:text="@{data.title}"
+            android:textColor="@color/white"
+            app:layout_constraintTop_toBottomOf="@id/image_item" />
 
+        <TextView
+            android:id="@+id/text_datetime"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@{data.datetime}"
+            android:textColor="@color/white"
+            app:layout_constraintTop_toBottomOf="@id/text_title" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

@@ -43,15 +43,6 @@ dependencies {
     implementation(project(":domain"))
     implementation(project(":presentation"))
 
-    // Google
-    implementation(AndroidX.ACTIVITY)
-    implementation(AndroidX.FRAGMENT)
-    implementation(AndroidX.APP_COMPAT)
-    implementation(AndroidX.CORE_KTX)
-    implementation(Google.MATERIAL)
-    implementation(AndroidX.CONSTRAINT_LAYOUT)
-    implementation(AndroidX.VIEW_MODEL)
-
     // DI
     implementation(Google.HILT_ANDROID)
     kapt(Google.HILT_ANDROID_COMPILER)
@@ -63,13 +54,5 @@ dependencies {
     androidTestImplementation("androidx.test.ext:junit-ktx:1.1.5")
 
     // Library
-    implementation(Libraries.RETROFIT)
-    implementation(Libraries.RETROFIT_CONVERTER_GSON)
-    implementation(Libraries.OKHTTP)
-    implementation(Libraries.OKHTTP_LOGGING_INTERCEPTOR)
     implementation(Libraries.TIMBER)
-    debugImplementation(Libraries.LEAK_CANARY)
-    implementation(Libraries.GLIDE)
-    implementation(Libraries.GLIDE_COMPILER)
-    implementation(Libraries.GLIDE_OKHTTP)
 }
