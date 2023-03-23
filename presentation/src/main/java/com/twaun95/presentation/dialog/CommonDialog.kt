@@ -19,16 +19,15 @@ import com.twaun95.presentation.extensions.setVisible
 class CommonDialog private constructor() : DialogFragment() {
 
     private lateinit var binding: FragmentDialogCommonBinding
-    private val title by lazy { arguments?.getString(TITLE).orEmpty() }
     private val description by lazy { arguments?.getString(DESCRIPTION).orEmpty() }
-    private val negativeButtonName by lazy {
-        arguments?.getString(NEGATIVE_BUTTON_NAME) ?: getString(R.string.cancel)
+    private val negativeName by lazy {
+        arguments?.getString(NEGATIVE_NAME) ?: getString(R.string.cancel)
     }
-    private val negativeButtonEnable by lazy {
-        arguments?.getBoolean(NEGATIVE_BUTTON_ENABLE) ?: true
+    private val negativeEnable by lazy {
+        arguments?.getBoolean(NEGATIVE_ENABLE) ?: true
     }
-    private val positiveButtonName by lazy {
-        arguments?.getString(POSITIVE_BUTTON_NAME) ?: getString(R.string.confirm)
+    private val positiveName by lazy {
+        arguments?.getString(POSITIVE_NAME) ?: getString(R.string.confirm)
     }
 
     override fun onCreateView(
@@ -46,12 +45,11 @@ class CommonDialog private constructor() : DialogFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.tvTitle.text = title
         binding.tvDescription.text = description
-        binding.tvNegative.setVisible(negativeButtonEnable)
-        if (!negativeButtonEnable) binding.tvPositive.setBackgroundResource(R.drawable.bg_dialog_single_positive)
-        binding.tvNegative.text = negativeButtonName
-        binding.tvPositive.text = positiveButtonName
+        binding.tvNegative.setVisible(negativeEnable)
+        binding.tvNegative.text = negativeName
+        if (!negativeEnable) binding.tvPositive.setBackgroundResource(R.drawable.bg_dialog_single_positive)
+        binding.tvPositive.text = positiveName
 
         binding.tvNegative.setOnClickListener {
             setFragmentResult(RESULT, bundleOf(RESULT_NEGATIVE_ACTION to true))
@@ -64,13 +62,11 @@ class CommonDialog private constructor() : DialogFragment() {
     }
 
     companion object {
-        private const val TITLE = "title"
         private const val DESCRIPTION = "description"
-        private const val NEGATIVE_BUTTON_NAME = "negative_button_name"
-        private const val NEGATIVE_BUTTON_ENABLE = "negative_button_enable"
-        private const val POSITIVE_BUTTON_NAME = "positive_button_name"
+        private const val NEGATIVE_NAME = "negative_name"
+        private const val NEGATIVE_ENABLE = "negative_enable"
+        private const val POSITIVE_NAME = "positive_name"
         private const val TAG = "CommonDialog"
-
         private const val RESULT = "result"
         private const val RESULT_NEGATIVE_ACTION = "result_negative_action"
         private const val RESULT_POSITIVE_ACTION = "result_positive_action"
@@ -78,21 +74,19 @@ class CommonDialog private constructor() : DialogFragment() {
         fun show(
             fragmentManager: FragmentManager,
             lifecycleOwner: LifecycleOwner,
-            title: String,
             description: String,
-            negativeButtonEnable: Boolean = true,
-            negativeButtonName: String,
+            negativeEnable: Boolean = true,
+            negativeName: String? = "",
             negativeAction: () -> Unit = {},
-            positiveButtonName: String,
+            positiveName: String,
             positiveAction: () -> Unit = {},
         ) {
             return CommonDialog().apply {
                 arguments = bundleOf(
-                    TITLE to title,
                     DESCRIPTION to description,
-                    NEGATIVE_BUTTON_NAME to negativeButtonName,
-                    NEGATIVE_BUTTON_ENABLE to negativeButtonEnable,
-                    POSITIVE_BUTTON_NAME to positiveButtonName
+                    NEGATIVE_NAME to negativeName,
+                    NEGATIVE_ENABLE to negativeEnable,
+                    POSITIVE_NAME to positiveName
                 )
             }.also {
                 fragmentManager.setFragmentResultListener(RESULT, lifecycleOwner) { _, bundle ->

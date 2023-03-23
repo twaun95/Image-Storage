@@ -37,16 +37,25 @@ class SearchFragment : BaseFragment<FragmentSearchBinding, SearchFragmentViewMod
         binding.buttonSearch.setOnClickListener {
 //            fragmentVM.getSearchList()
 //            fragmentVM.getVideoList()
+//            CommonDialog.show(
+//                parentFragmentManager,
+//                viewLifecycleOwner,
+//                "내용\n보관함에 저장하시겠습니까?",
+//                true,
+//                "취소",
+//                {},
+//                "예",
+//                {}
+//            )
             CommonDialog.show(
                 parentFragmentManager,
                 viewLifecycleOwner,
-                "제목",
-                "내용",
-                true,
-                "취소",
-                {},
-                "예",
-                {}
+                "리스트를 불러오는데 실패하였습니다.\n 다시 시도해주세요.",
+                false,
+                positiveName = "확인",
+                positiveAction = {
+                    Timber.d("확인 clicked")
+                }
             )
         }
     }

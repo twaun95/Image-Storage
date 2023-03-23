@@ -7,36 +7,21 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/bg_rect_white_r16"
-        android:minWidth="300dp"
-        >
-
-        <TextView
-            android:id="@+id/tv_title"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="18dp"
-            android:layout_marginTop="25dp"
-            android:gravity="center"
-            android:includeFontPadding="false"
-            android:textColor="@color/black"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:text="정말 수정하시겠어요?" />
+        android:minWidth="300dp">
 
         <TextView
             android:id="@+id/tv_description"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="18dp"
-            android:layout_marginTop="6dp"
+            android:layout_marginTop="32dp"
             android:ellipsize="end"
+            android:textColor="@color/black"
             android:gravity="center_horizontal"
             android:includeFontPadding="false"
-            android:minLines="2"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tv_title"
+            app:layout_constraintTop_toTopOf="parent"
             tools:text="지금부터 수정한 내용이\n기록 화면에 적용되어 보일거에요." />
 
         <TextView
@@ -58,7 +43,7 @@
             android:id="@+id/tv_positive"
             android:layout_width="0dp"
             android:layout_height="50dp"
-            android:layout_marginTop="14dp"
+            android:layout_marginTop="32dp"
             android:background="@drawable/bg_dialog_positive"
             android:gravity="center"
             android:textColor="@color/black"
