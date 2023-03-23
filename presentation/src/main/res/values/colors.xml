@@ -10,4 +10,6 @@
 
     <color name="kakaoBlack">#1E1E1E</color>
 
+    <color name="loading">#4447CD</color>
+
 </resources>

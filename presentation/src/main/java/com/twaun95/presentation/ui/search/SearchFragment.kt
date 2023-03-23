@@ -9,6 +9,7 @@ import com.twaun95.presentation.adapter.VideoListAdapter
 import com.twaun95.presentation.base.BaseFragment
 import com.twaun95.presentation.databinding.FragmentSearchBinding
 import com.twaun95.presentation.dialog.CommonDialog
+import com.twaun95.presentation.ui.GridLayoutManager
 import com.twaun95.presentation.ui.MainActivityViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.launchIn
@@ -37,26 +38,28 @@ class SearchFragment : BaseFragment<FragmentSearchBinding, SearchFragmentViewMod
         binding.buttonSearch.setOnClickListener {
 //            fragmentVM.getSearchList()
 //            fragmentVM.getVideoList()
-//            CommonDialog.show(
-//                parentFragmentManager,
-//                viewLifecycleOwner,
-//                "내용\n보관함에 저장하시겠습니까?",
-//                true,
-//                "취소",
-//                {},
-//                "예",
-//                {}
-//            )
             CommonDialog.show(
                 parentFragmentManager,
                 viewLifecycleOwner,
-                "리스트를 불러오는데 실패하였습니다.\n 다시 시도해주세요.",
-                false,
-                positiveName = "확인",
-                positiveAction = {
-                    Timber.d("확인 clicked")
+                "이미지를 불러오시겠습니까?",
+                true,
+                "취소",
+                {},
+                "확인",
+                {
+                    fragmentVM.getVideoList()
                 }
             )
+//            CommonDialog.show(
+//                parentFragmentManager,
+//                viewLifecycleOwner,
+//                "리스트를 불러오는데 실패하였습니다.\n 다시 시도해주세요.",
+//                false,
+//                positiveName = "확인",
+//                positiveAction = {
+//                    Timber.d("확인 clicked")
+//                }
+//            )
         }
     }
 
@@ -80,7 +83,7 @@ class SearchFragment : BaseFragment<FragmentSearchBinding, SearchFragmentViewMod
 
     private fun setRecyclerView() {
         binding.recyclerViewSearch.apply {
-//            adapter = searchAdapter
+            layoutManager = GridLayoutManager(requireContext())
             adapter = videoAdapter
         }
     }
