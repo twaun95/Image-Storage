@@ -1,6 +1,4 @@
-package com.twaun95.data.model.image
-
-import com.twaun95.domain.model.ImageEntity
+package com.twaun95.domain.entity
 
 data class KakaoImage(
     val collection: String,

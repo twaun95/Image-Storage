@@ -1,6 +1,4 @@
-package com.twaun95.data.model.video
-
-import com.twaun95.domain.model.VideoEntity
+package com.twaun95.domain.entity
 
 data class KakaoVideo(
     val title: String,

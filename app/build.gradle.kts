@@ -55,4 +55,5 @@ dependencies {
 
     // Library
     implementation(Libraries.TIMBER)
+    debugImplementation(Libraries.LEAK_CANARY)
 }

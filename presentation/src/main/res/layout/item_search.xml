@@ -7,7 +7,7 @@
 
         <variable
             name="data"
-            type="com.twaun95.domain.model.VideoEntity" />
+            type="com.twaun95.domain.entity.Thumbnail" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -22,14 +22,14 @@
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            bind:imageUrl="@{data.thumbnail}" />
+            bind:imageUrl="@{data.url}" />
 
         <TextView
             android:id="@+id/text_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="@{data.title}"
+            android:text="@{data.dateTime}"
             android:textColor="@color/white"
             app:layout_constraintTop_toBottomOf="@id/image_item" />
 
@@ -38,7 +38,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="@{data.datetime}"
             android:textColor="@color/white"
             app:layout_constraintTop_toBottomOf="@id/text_title" />
     </androidx.constraintlayout.widget.ConstraintLayout>

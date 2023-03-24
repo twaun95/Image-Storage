@@ -44,4 +44,5 @@ object Libraries {
     const val GLIDE                       = "com.github.bumptech.glide:glide:${Versions.GLIDE}"
     const val GLIDE_COMPILER              = "com.github.bumptech.glide:glide:${Versions.GLIDE}"
     const val GLIDE_OKHTTP                = "com.github.bumptech.glide:okhttp3-integration:${Versions.GLIDE}"
+    const val CHUCKER                     = "com.github.chuckerteam.chucker:library:${Versions.CHUCKER}"
 }

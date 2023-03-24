@@ -1,7 +1,7 @@
 package com.twaun95.data.service
 
-import com.twaun95.data.model.image.ResponseImageSearch
-import com.twaun95.data.model.video.ResponseVideo
+import com.twaun95.domain.entity.response.ImageSearchResponse
+import com.twaun95.domain.entity.response.VideoSearchResponse
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Query
@@ -13,7 +13,7 @@ interface SearchService {
         @Query("sort") sort: String? = null,
         @Query("page") page: Int? = null,
         @Query("size") size: Int? = null
-    ) : Response<ResponseImageSearch>
+    ) : Response<ImageSearchResponse>
 
     @GET("v2/search/vclip")
     suspend fun getVideos(
@@ -21,5 +21,5 @@ interface SearchService {
         @Query("sort") sort: String? = null,
         @Query("page") page: Int? = null,
         @Query("size") size: Int? = null
-    ) : Response<ResponseVideo>
+    ) : Response<VideoSearchResponse>
 }

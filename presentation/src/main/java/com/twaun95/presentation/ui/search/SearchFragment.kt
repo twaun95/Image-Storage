@@ -4,8 +4,7 @@ import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import com.twaun95.presentation.R
-import com.twaun95.presentation.adapter.SearchListAdapter
-import com.twaun95.presentation.adapter.VideoListAdapter
+import com.twaun95.presentation.adapter.ThumbnailListAdapter
 import com.twaun95.presentation.base.BaseFragment
 import com.twaun95.presentation.databinding.FragmentSearchBinding
 import com.twaun95.presentation.dialog.CommonDialog
@@ -21,8 +20,7 @@ class SearchFragment : BaseFragment<FragmentSearchBinding, SearchFragmentViewMod
     override val fragmentVM by viewModels<SearchFragmentViewModel>()
     private val activityVM by activityViewModels<MainActivityViewModel>()
 
-    private val searchAdapter by lazy { SearchListAdapter() }
-    private val videoAdapter by lazy { VideoListAdapter() }
+    private val thumbnailAdapter by lazy { ThumbnailListAdapter() }
 
     override fun initView() {
         super.initView()
@@ -36,57 +34,50 @@ class SearchFragment : BaseFragment<FragmentSearchBinding, SearchFragmentViewMod
     override fun setEvent() {
         super.setEvent()
         binding.buttonSearch.setOnClickListener {
-//            fragmentVM.getSearchList()
-//            fragmentVM.getVideoList()
             CommonDialog.show(
                 parentFragmentManager,
                 viewLifecycleOwner,
                 "이미지를 불러오시겠습니까?",
                 true,
-                "취소",
+                getString(R.string.cancel),
                 {},
-                "확인",
+                getString(R.string.confirm),
                 {
-                    fragmentVM.getVideoList()
+                    fragmentVM.getThumbnailList()
                 }
             )
-//            CommonDialog.show(
-//                parentFragmentManager,
-//                viewLifecycleOwner,
-//                "리스트를 불러오는데 실패하였습니다.\n 다시 시도해주세요.",
-//                false,
-//                positiveName = "확인",
-//                positiveAction = {
-//                    Timber.d("확인 clicked")
-//                }
-//            )
         }
     }
 
     override fun setObserver() {
         super.setObserver()
 
-        fragmentVM.imageList
+        fragmentVM.thumbnailList
             .onEach {
                 Timber.d("viewModel ${it.size}")
-                searchAdapter.submitList(it)
+                thumbnailAdapter.submitList(it)
             }
             .launchIn(this.lifecycleScope)
 
-        fragmentVM.videoList
-            .onEach {
-                Timber.d("viewModel ${it.size}")
-                videoAdapter.submitList(it)
-            }
-            .launchIn(this.lifecycleScope)
+        fragmentVM.error.observe(viewLifecycleOwner){
+            CommonDialog.show(
+                parentFragmentManager,
+                viewLifecycleOwner,
+                "리스트를 불러오는데 실패하였습니다.\n다시 시도해주세요.\n($it)",
+                false,
+                positiveName = getString(R.string.confirm),
+                positiveAction = {}
+            )
+        }
     }
 
     private fun setRecyclerView() {
         binding.recyclerViewSearch.apply {
             layoutManager = GridLayoutManager(requireContext())
-            adapter = videoAdapter
+            adapter = thumbnailAdapter
         }
     }
+
 
     companion object {
         fun getInstance() : SearchFragment = SearchFragment()

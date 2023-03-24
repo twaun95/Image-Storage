@@ -1,45 +1,38 @@
 package com.twaun95.data.repository
 
-import com.twaun95.data.model.image.KakaoImage
-import com.twaun95.data.model.video.KakaoVideo
+import com.twaun95.data.dataSource.remote.image.ImageDataSource
+import com.twaun95.data.dataSource.remote.request.SearchRequest
+import com.twaun95.data.dataSource.remote.video.VideoDataSource
 import com.twaun95.data.service.SearchService
-import com.twaun95.domain.model.ImageEntity
-import com.twaun95.domain.model.Result
-import com.twaun95.domain.model.VideoEntity
+import com.twaun95.domain.entity.*
+import com.twaun95.domain.entity.response.VideoSearchResponse
 import com.twaun95.domain.repository.SearchRepository
 import timber.log.Timber
 import javax.inject.Inject
 
 class SearchRepositoryImpl @Inject constructor(
-    private val searchService: SearchService
+    private val videoDataSource: VideoDataSource,
+    private val imageDataSource: ImageDataSource
 ) : SearchRepository {
-    override suspend fun getImages(): Result<List<ImageEntity>> {
-        val response = searchService.getImages( "android")
+    override suspend fun getThumbnail(): List<Thumbnail> {
+        val videoResponse = videoDataSource.getVideo(SearchRequest("android"))
+        val imageResponse = imageDataSource.getImage(SearchRequest("android"))
 
-        return try {
-            if (response.isSuccessful) {
-                Timber.d("taewaun ${response.body()}")
-                return Result.Success(response.body()!!.documents.map { KakaoImage.toImageEntity(it) })
-            } else {
-                Result.Fail(IllegalArgumentException("실패."))
-            }
-        } catch (e: Exception) {
-            Result.Fail(e)
+        val videosToThumbnail = videoResponse.documents.map {
+            Thumbnail(it.thumbnail, it.datetime)
         }
-    }
-
-    override suspend fun getVideos(): Result<List<VideoEntity>> {
-        val response = searchService.getVideos( "android")
-
-        return try {
-            if (response.isSuccessful) {
-                Timber.d("taewaun ${response.body()}")
-                return Result.Success(response.body()!!.documents.map { KakaoVideo.toVideoEntity(it) })
-            } else {
-                Result.Fail(IllegalArgumentException("실패."))
-            }
-        } catch (e: Exception) {
-            Result.Fail(e)
+        val imagesToThumbnail = imageResponse.documents.map {
+            Thumbnail(it.thumbnail_url, it.datetime)
         }
+
+        val thumbnails = videosToThumbnail + imagesToThumbnail
+        Timber.d("videoResponse: ${videoResponse.meta}")
+        Timber.d("videosToThumbnail: ${videosToThumbnail.size}")
+        Timber.d("imageResponse: ${imageResponse.meta}")
+        Timber.d("imagesToThumbnail: ${imagesToThumbnail.size}")
+
+        Timber.d("thumbnails: ${thumbnails.size}")
+
+        return thumbnails
     }
 }

@@ -1,4 +1,4 @@
-package com.twaun95.domain.model
+package com.twaun95.domain.entity
 
 data class ImageEntity(
     val collection: String,
