@@ -1,6 +1,6 @@
-package com.twaun95.data.dataSource.remote.image
+package com.twaun95.data.remote.image
 
-import com.twaun95.data.dataSource.remote.request.SearchRequest
+import com.twaun95.data.remote.request.SearchRequest
 import com.twaun95.domain.entity.response.ImageSearchResponse
 
 

@@ -1,10 +1,10 @@
-package com.twaun95.presentation.ui
+package com.twaun95.presentation.ui.search
 
 import android.content.Context
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
-class GridLayoutManager(
+class SearchLayoutManager(
     context: Context
 ) : GridLayoutManager(context, SPAN_COUNT, VERTICAL, false) {
 

@@ -1,4 +1,4 @@
-package com.twaun95.data.dataSource.remote.request
+package com.twaun95.data.remote.request
 
 
 data class SearchRequest(
