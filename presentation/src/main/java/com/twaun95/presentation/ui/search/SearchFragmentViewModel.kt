@@ -30,7 +30,7 @@ class SearchFragmentViewModel @Inject constructor(
         getStorage()
     }
 
-    fun getThumbnailList() {
+    fun getSearchList() {
         viewModelScope.launch {
             startLoading()
             kotlin.runCatching {

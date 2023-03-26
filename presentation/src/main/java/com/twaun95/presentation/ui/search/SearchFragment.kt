@@ -42,7 +42,7 @@ class SearchFragment : BaseFragment<FragmentSearchBinding, SearchFragmentViewMod
                 {},
                 getString(R.string.confirm),
                 {
-                    fragmentVM.getThumbnailList()
+                    fragmentVM.getSearchList()
                 }
             )
         }
