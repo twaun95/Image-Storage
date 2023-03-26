@@ -1,15 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="black">#FF000000</color>
+    <color name="black_light">#1E1E1E</color>
     <color name="white">#FFFFFFFF</color>
     <color name="gray">#D8D8D8</color>
     <color name="gray_light">#ECECEC</color>
 
+    <color name="bg_main">#F4F4F4</color>
+
     <color name="primary">#FFE300</color>
     <color name="primary_light">#F6E97D</color>
 
-    <color name="kakaoBlack">#1E1E1E</color>
+    <color name="menu_selected">#0A0A0A</color>
+    <color name="menu_unselected">#393939</color>
 
     <color name="loading">#4447CD</color>
-
 </resources>

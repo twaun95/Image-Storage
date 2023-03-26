@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.twaun95.domain.entity.Thumbnail
 import com.twaun95.presentation.databinding.ItemSearchBinding
+import com.twaun95.presentation.extensions.setOnSingleClickListener
 
 class ThumbnailListAdapter(
     var onClick: ((item: Thumbnail) -> Unit) ?= null
@@ -20,6 +21,14 @@ class ThumbnailListAdapter(
         )
     }
 
+    override fun getItemCount(): Int {
+        return currentList.size
+    }
+
+    override fun getItemId(position: Int): Long {
+        return getItem(position).url.toLong()
+    }
+
     override fun onBindViewHolder(holder: ThumbnailViewHolder, position: Int) {
         return holder.bind(getItem(position))
     }
@@ -27,7 +36,7 @@ class ThumbnailListAdapter(
     companion object {
         val diffUtil = object: DiffUtil.ItemCallback<Thumbnail>() {
             override fun areItemsTheSame(oldItem: Thumbnail, newItem: Thumbnail): Boolean {
-                return oldItem == newItem
+                return oldItem.url == newItem.url
             }
 
             override fun areContentsTheSame(oldItem: Thumbnail, newItem: Thumbnail): Boolean {
@@ -40,9 +49,11 @@ class ThumbnailListAdapter(
         private val binding: ItemSearchBinding,
         private val onClickListener: ((item: Thumbnail) -> Unit) ?= null
     ) : RecyclerView.ViewHolder(binding.root) {
-        fun bind(data: Thumbnail) {
+        fun bind(
+            data: Thumbnail
+        ) {
             binding.data = data
-            binding.layoutItem.setOnClickListener {
+            binding.imageBookmark.setOnSingleClickListener {
                 onClickListener?.invoke(data)
             }
         }

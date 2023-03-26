@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:bind="http://schemas.android.com/tools">
+    xmlns:bind="http://schemas.android.com/tools"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
@@ -14,9 +15,9 @@
         android:id="@+id/layout_item"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_marginTop="10dp"
         android:clickable="true"
-        android:focusable="true"
-        android:background="@color/cardview_dark_background">
+        android:focusable="true">
 
         <ImageView
             android:id="@+id/image_item"
@@ -25,23 +26,28 @@
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            bind:imageUrl="@{data.url}" />
+            bind:imageUrl="@{data.url}"
+            tools:background="@color/black" />
 
-        <TextView
-            android:id="@+id/text_title"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="@{data.dateTime}"
-            android:textColor="@color/white"
-            app:layout_constraintTop_toBottomOf="@id/image_item" />
+        <ImageView
+            android:id="@+id/image_bookmark"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            app:layout_constraintLeft_toLeftOf="@id/image_item"
+            app:layout_constraintBottom_toBottomOf="@id/image_item"
+            bind:setBookMarkImage="@{data.bookMarked}"
+            tools:background="@drawable/bookmark_on" />
 
         <TextView
             android:id="@+id/text_datetime"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
             android:gravity="center"
-            android:textColor="@color/white"
-            app:layout_constraintTop_toBottomOf="@id/text_title" />
+            android:toDateTimeFormat="@{data.dateTime}"
+            android:textColor="@color/black"
+            app:layout_constraintTop_toBottomOf="@id/image_item"
+            tools:text="dateTime" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

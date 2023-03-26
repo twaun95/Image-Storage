@@ -48,8 +48,6 @@ dependencies {
     implementation(Libraries.OKHTTP)
     implementation(Libraries.OKHTTP_LOGGING_INTERCEPTOR)
 
-//    debugImplementation(Libraries.CHUCKER)
-
     testImplementation(UnitTest.JUNIT)
     androidTestImplementation(AndroidTest.ANDROIDX_JUNIT)
     androidTestImplementation(AndroidTest.ANDROID_JUNIT)

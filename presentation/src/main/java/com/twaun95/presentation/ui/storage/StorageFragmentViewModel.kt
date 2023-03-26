@@ -19,8 +19,7 @@ class StorageFragmentViewModel @Inject constructor(
 ) : BaseViewModel(){
 
     private val _storageList = MutableStateFlow(emptyList<Thumbnail>())
-    val storageList: StateFlow<List<Thumbnail>>
-        get() = _storageList
+    val storageList: StateFlow<List<Thumbnail>> get() = _storageList
 
     init {
         getThumbnailList()
@@ -33,10 +32,8 @@ class StorageFragmentViewModel @Inject constructor(
                 getStorageUseCase.invoke()
             }.onSuccess {
                 _storageList.value = it
-                Timber.d("onSuccess: $it")
             }.onFailure {
                 error.value = it.message ?: ""
-                Timber.d("onFailure: $it")
             }
             stopLoading()
         }
@@ -49,10 +46,8 @@ class StorageFragmentViewModel @Inject constructor(
                 deleteStorageUseCase.invoke(thumbnail)
             }.onSuccess {
                 getThumbnailList()
-                Timber.d("onSuccess: $it")
             }.onFailure {
                 error.value = it.message ?: ""
-                Timber.d("onFailure: $it")
             }
             stopLoading()
         }

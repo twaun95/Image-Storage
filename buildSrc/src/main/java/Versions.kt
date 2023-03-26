@@ -1,10 +1,6 @@
 object Versions {
     const val GRADLE = "7.2.1"
 
-    // Kotlin
-    const val KOTLIN_VERSION = "1.6.10"
-    const val KOTLIN_COROUTINE = "1.5.1"
-
     // Android JetPack
     const val ACTIVITY = "1.4.0"
     const val FRAGMENT = "1.4.1"
@@ -15,7 +11,6 @@ object Versions {
 
     // AndroidX
     const val SWIPE_LAYOUT = "1.1.0"
-    const val MULTI_DEX = "2.0.1"
 
     // Google
     const val HILT = "2.40.5"

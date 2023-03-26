@@ -1,11 +1,9 @@
 package com.twaun95.data.di
 
-import android.content.Context
 import com.twaun95.data.service.SearchService
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
-import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
@@ -26,19 +24,6 @@ object NetworkModule {
     @Provides
     @Singleton
     fun provideClient(): OkHttpClient {
-//        val chuckerInterceptor = ChuckerInterceptor
-//            .Builder(context = context)
-//            .collector(
-//                ChuckerCollector(
-//                    context = context,
-//                    showNotification = true,
-//                    retentionPeriod = RetentionManager.Period.ONE_HOUR,
-//                )
-//            )
-//            .maxContentLength(250_000L)
-//            .alwaysReadResponseBody(true)
-//            .build()
-
         return OkHttpClient.Builder()
             .addNetworkInterceptor { chain ->
                 chain.proceed(
@@ -52,7 +37,6 @@ object NetworkModule {
                     Timber.d("Response Body: ${response.peekBody(4096).string()}")
                 }
             }
-//            .addInterceptor(chuckerInterceptor)
             .connectTimeout(TIME_OUT_COUNT, TimeUnit.SECONDS)
             .readTimeout(TIME_OUT_COUNT, TimeUnit.SECONDS)
             .build()

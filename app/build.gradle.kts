@@ -43,6 +43,8 @@ dependencies {
     implementation(project(":domain"))
     implementation(project(":presentation"))
 
+    implementation(Google.MATERIAL)
+
     // DI
     implementation(Google.HILT_ANDROID)
     kapt(Google.HILT_ANDROID_COMPILER)

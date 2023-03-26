@@ -5,12 +5,13 @@ import com.twaun95.domain.repository.SearchRepository
 import javax.inject.Inject
 
 
-class GetThumbnailUseCase  @Inject constructor(
+class GetSearchUseCase  @Inject constructor(
     private val searchRepository: SearchRepository
 ) {
 
     suspend operator fun invoke(
+        input: String
     ) : List<Thumbnail> {
-        return searchRepository.getThumbnail()
+        return searchRepository.getSearch(input)
     }
 }

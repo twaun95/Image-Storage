@@ -1,5 +1,7 @@
 package com.twaun95.domain.entity
 
+import java.text.SimpleDateFormat
+
 data class KakaoImage(
     val collection: String,
     val thumbnail_url: String,
@@ -11,17 +13,18 @@ data class KakaoImage(
     val datetime: String
 ) {
     companion object {
-        fun toImageEntity(kakaoImage: KakaoImage) : ImageEntity {
-            return ImageEntity(
-                collection = kakaoImage.collection,
-                thumbnail_url = kakaoImage.thumbnail_url,
-                image_url = kakaoImage.image_url,
-                width = kakaoImage.width,
-                height = kakaoImage.height,
-                display_sitename = kakaoImage.display_sitename,
-                doc_url = kakaoImage.doc_url,
-                datetime = kakaoImage.datetime
-            )
+        fun toThumbnail(url: String, dateTime: String, bookMarked: Boolean) : Thumbnail {
+            val parser = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss")
+            val formatter = SimpleDateFormat("yyyy년MM월dd일 HH시mm분")
+
+            return Thumbnail(url, formatter.format(parser.parse(dateTime)), bookMarked)
+        }
+
+        fun toLocalThumbnail(url: String, dateTime: String) : LocalThumbnail {
+            val parser = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss")
+            val formatter = SimpleDateFormat("yyyy년MM월dd일 HH시mm분")
+
+            return LocalThumbnail(url, formatter.format(parser.parse(dateTime)))
         }
     }
 }

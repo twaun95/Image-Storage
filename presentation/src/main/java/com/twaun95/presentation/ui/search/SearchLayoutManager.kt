@@ -15,7 +15,7 @@ class SearchLayoutManager(
 
     companion object {
         private const val SPAN_COUNT = 2
-        private const val DIVIDE_BY = 2.1
+        private const val DIVIDE_BY = 3.1
 
     }
 }

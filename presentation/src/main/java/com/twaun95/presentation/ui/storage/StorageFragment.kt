@@ -48,7 +48,7 @@ class StorageFragment : BaseFragment<FragmentStorageBinding, StorageFragmentView
             CommonDialog.show(
                 parentFragmentManager,
                 viewLifecycleOwner,
-                "리스트를 불러오는데 실패하였습니다.\n다시 시도해주세요.\n($it)",
+                getString(R.string.message_error),
                 false,
                 positiveName = getString(R.string.confirm),
                 positiveAction = {}
@@ -66,16 +66,16 @@ class StorageFragment : BaseFragment<FragmentStorageBinding, StorageFragmentView
         binding.recyclerViewStorage.apply {
             layoutManager = StorageLayoutManager(requireContext())
             adapter = storageAdapter.apply {
-                onClick = {
+                onClick = { item ->
                     CommonDialog.show(
                         parentFragmentManager,
                         viewLifecycleOwner,
-                        "보관함에서 지우시겠습니까?",
+                        getString(R.string.message_delete),
                         true,
                         getString(R.string.cancel),
                         {},
                         getString(R.string.confirm),
-                        { fragmentVM.delete(it) }
+                        { fragmentVM.delete(item) }
                     )
                 }
             }

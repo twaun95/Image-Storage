@@ -8,6 +8,6 @@ class DeleteStorageUseCase @Inject constructor(
     private val searchRepository: SearchRepository
 ) {
     operator fun invoke(thumbnail: Thumbnail) {
-        searchRepository.removeStorage(thumbnail)
+        searchRepository.deleteStorage(thumbnail)
     }
 }

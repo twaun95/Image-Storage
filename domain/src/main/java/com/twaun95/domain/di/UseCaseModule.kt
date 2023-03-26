@@ -4,7 +4,7 @@ import com.twaun95.domain.repository.SearchRepository
 import com.twaun95.domain.usecase.AddStorageUseCase
 import com.twaun95.domain.usecase.DeleteStorageUseCase
 import com.twaun95.domain.usecase.GetStorageUseCase
-import com.twaun95.domain.usecase.GetThumbnailUseCase
+import com.twaun95.domain.usecase.GetSearchUseCase
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -17,8 +17,8 @@ object UseCaseModule {
 
     @Singleton
     @Provides
-    fun provideGetThumbnail(repository: SearchRepository): GetThumbnailUseCase {
-        return GetThumbnailUseCase(repository)
+    fun provideGetSearch(repository: SearchRepository): GetSearchUseCase {
+        return GetSearchUseCase(repository)
     }
 
     @Singleton

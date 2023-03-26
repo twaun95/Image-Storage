@@ -1,10 +1,3 @@
-object Kotlin {
-    const val KOTLIN_STDLIB      = "org.jetbrains.kotlin:kotlin-stdlib:${Versions.KOTLIN_VERSION}"
-    const val COROUTINES_CORE    = "org.jetbrains.kotlinx:kotlinx-coroutines-core:${Versions.KOTLIN_COROUTINE}"
-    const val COROUTINES_ANDROID = "org.jetbrains.kotlinx:kotlinx-coroutines-android:${Versions.KOTLIN_COROUTINE}"
-}
-
-
 object AndroidX {
     const val APP_COMPAT                  = "androidx.appcompat:appcompat:${Versions.APP_COMPAT}"
     const val CORE_KTX                    = "androidx.core:core-ktx:${Versions.CORE_KTX}"
@@ -13,13 +6,11 @@ object AndroidX {
     const val VIEW_MODEL                  = "androidx.lifecycle:lifecycle-viewmodel-ktx:${Versions.LIFECYCLE}"
     const val FRAGMENT                    = "androidx.fragment:fragment-ktx:${Versions.FRAGMENT}"
     const val SWIPE_LAYOUT                = "androidx.swiperefreshlayout:swiperefreshlayout:${Versions.SWIPE_LAYOUT}"
-    const val MULTI_DEX                   = "androidx.multidex:multidex:${Versions.MULTI_DEX}"
 }
 
 object Google {
     const val HILT_ANDROID                = "com.google.dagger:hilt-android:${Versions.HILT}"
     const val HILT_ANDROID_COMPILER       = "com.google.dagger:hilt-android-compiler:${Versions.HILT}"
-
     const val MATERIAL                    = "com.google.android.material:material:${Versions.MATERIAL}"
 }
 

@@ -14,6 +14,7 @@ import androidx.fragment.app.setFragmentResult
 import androidx.lifecycle.LifecycleOwner
 import com.twaun95.presentation.R
 import com.twaun95.presentation.databinding.FragmentDialogCommonBinding
+import com.twaun95.presentation.extensions.setOnSingleClickListener
 import com.twaun95.presentation.extensions.setVisible
 
 class CommonDialog private constructor() : DialogFragment() {
@@ -51,11 +52,11 @@ class CommonDialog private constructor() : DialogFragment() {
         if (!negativeEnable) binding.tvPositive.setBackgroundResource(R.drawable.bg_dialog_single_positive)
         binding.tvPositive.text = positiveName
 
-        binding.tvNegative.setOnClickListener {
+        binding.tvNegative.setOnSingleClickListener {
             setFragmentResult(RESULT, bundleOf(RESULT_NEGATIVE_ACTION to true))
             dismiss()
         }
-        binding.tvPositive.setOnClickListener {
+        binding.tvPositive.setOnSingleClickListener {
             setFragmentResult(RESULT, bundleOf(RESULT_POSITIVE_ACTION to true))
             dismiss()
         }

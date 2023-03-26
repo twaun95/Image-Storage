@@ -2,6 +2,7 @@ package com.twaun95.presentation.ui
 
 import android.graphics.Rect
 import android.view.MotionEvent
+import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
 import androidx.activity.viewModels
@@ -23,14 +24,6 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main){
         initBottomNavigation()
     }
 
-    override fun setEvent() {
-        super.setEvent()
-    }
-
-    override fun setObserver() {
-        super.setObserver()
-    }
-
     private fun initViewPager() {
         binding.viewPager.apply {
             isUserInputEnabled = false
@@ -44,17 +37,24 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main){
             setOnItemSelectedListener { page ->
                 when(page.itemId) {
                     R.id.page_search -> {
-                        binding.viewPager.setCurrentItem(0, false)
+                        binding.viewPager.setCurrentItem(ViewPagerAdapter.PAGE_SEARCH, false)
                         true
                     }
                     R.id.page_storage -> {
-                        binding.viewPager.setCurrentItem(1, false)
+                        binding.viewPager.setCurrentItem(ViewPagerAdapter.PAGE_STORAGE, false)
                         true
                     }
                     else -> { false }
                 }
             }
         }
+    }
+
+    fun downKeyboard(v: View) {
+        v.clearFocus()
+        val imm: InputMethodManager =
+            getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager
+        imm.hideSoftInputFromWindow(v.windowToken, 0)
     }
 
     override fun dispatchTouchEvent(event: MotionEvent): Boolean {
@@ -64,10 +64,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main){
                 val outRect = Rect()
                 v.getGlobalVisibleRect(outRect)
                 if (!outRect.contains(event.rawX.toInt(), event.rawY.toInt())) {
-                    v.clearFocus()
-                    val imm: InputMethodManager =
-                        getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager
-                    imm.hideSoftInputFromWindow(v.getWindowToken(), 0)
+                    downKeyboard(v)
                 }
             }
         }

@@ -19,5 +19,7 @@ class ViewPagerAdapter(fragment: FragmentActivity) : FragmentStateAdapter(fragme
 
     companion object {
         private const val PAGE_COUNT = 2
+        const val PAGE_SEARCH = 0
+        const val PAGE_STORAGE = 1
     }
 }
