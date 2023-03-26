@@ -35,7 +35,7 @@ class ImageStorageSharedPreferenceImpl @Inject constructor(
     override fun putArrayItem(key: String, value: Thumbnail) {
         val newArray = getArray(key).apply {
             add(value)
-        }
+        }.distinct()
         val newArrayToJon = GsonBuilder().create().toJson(
             newArray,
             object : TypeToken<ArrayList<Thumbnail>>() {}.type
