@@ -8,7 +8,6 @@ import com.twaun95.presentation.adapter.ThumbnailListAdapter
 import com.twaun95.presentation.base.BaseFragment
 import com.twaun95.presentation.databinding.FragmentStorageBinding
 import com.twaun95.presentation.dialog.CommonDialog
-import com.twaun95.presentation.ui.search.SearchLayoutManager
 import com.twaun95.presentation.ui.MainActivityViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.launchIn
@@ -38,7 +37,7 @@ class StorageFragment : BaseFragment<FragmentStorageBinding, StorageFragmentView
     override fun setObserver() {
         super.setObserver()
 
-        fragmentVM.thumbnailList
+        fragmentVM.storageList
             .onEach {
                 Timber.d("viewModel ${it.size}")
                 storageAdapter.submitList(it)

@@ -2,7 +2,8 @@ package com.twaun95.presentation.ui.storage
 
 import androidx.lifecycle.viewModelScope
 import com.twaun95.domain.entity.Thumbnail
-import com.twaun95.domain.usecase.GetThumbnailUseCase
+import com.twaun95.domain.usecase.DeleteStorageUseCase
+import com.twaun95.domain.usecase.GetStorageUseCase
 import com.twaun95.presentation.base.BaseViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -13,20 +14,25 @@ import javax.inject.Inject
 
 @HiltViewModel
 class StorageFragmentViewModel @Inject constructor(
-    private val getThumbnailUseCase: GetThumbnailUseCase
+    private val getStorageUseCase: GetStorageUseCase,
+    private val deleteStorageUseCase: DeleteStorageUseCase
 ) : BaseViewModel(){
 
-    private val _thumbnailList = MutableStateFlow(emptyList<Thumbnail>())
-    val thumbnailList: StateFlow<List<Thumbnail>>
-        get() = _thumbnailList
+    private val _storageList = MutableStateFlow(emptyList<Thumbnail>())
+    val storageList: StateFlow<List<Thumbnail>>
+        get() = _storageList
+
+    init {
+        getThumbnailList()
+    }
 
     fun getThumbnailList() {
         viewModelScope.launch {
             startLoading()
             kotlin.runCatching {
-                getThumbnailUseCase()
+                getStorageUseCase.invoke()
             }.onSuccess {
-                _thumbnailList.value = it
+                _storageList.value = it
                 Timber.d("onSuccess: $it")
             }.onFailure {
                 error.value = it.message ?: ""
@@ -36,7 +42,19 @@ class StorageFragmentViewModel @Inject constructor(
         }
     }
 
-    fun delete(item: Thumbnail) {
-        Timber.d("$item")
+    fun delete(thumbnail: Thumbnail) {
+        viewModelScope.launch {
+            startLoading()
+            kotlin.runCatching {
+                deleteStorageUseCase.invoke(thumbnail)
+            }.onSuccess {
+                getThumbnailList()
+                Timber.d("onSuccess: $it")
+            }.onFailure {
+                error.value = it.message ?: ""
+                Timber.d("onFailure: $it")
+            }
+            stopLoading()
+        }
     }
 }
