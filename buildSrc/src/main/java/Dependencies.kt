@@ -5,7 +5,6 @@ object AndroidX {
     const val ACTIVITY                    = "androidx.activity:activity-ktx:${Versions.ACTIVITY}"
     const val VIEW_MODEL                  = "androidx.lifecycle:lifecycle-viewmodel-ktx:${Versions.LIFECYCLE}"
     const val FRAGMENT                    = "androidx.fragment:fragment-ktx:${Versions.FRAGMENT}"
-    const val SWIPE_LAYOUT                = "androidx.swiperefreshlayout:swiperefreshlayout:${Versions.SWIPE_LAYOUT}"
 }
 
 object Google {
@@ -35,5 +34,4 @@ object Libraries {
     const val GLIDE                       = "com.github.bumptech.glide:glide:${Versions.GLIDE}"
     const val GLIDE_COMPILER              = "com.github.bumptech.glide:glide:${Versions.GLIDE}"
     const val GLIDE_OKHTTP                = "com.github.bumptech.glide:okhttp3-integration:${Versions.GLIDE}"
-    const val CHUCKER                     = "com.github.chuckerteam.chucker:library:${Versions.CHUCKER}"
 }

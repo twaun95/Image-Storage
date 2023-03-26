@@ -110,7 +110,6 @@ class SearchFragment : BaseFragment<FragmentSearchBinding, SearchFragmentViewMod
             {
                 fragmentVM.saveStorage(thumbnail)
                 fragmentVM.getSearchList()
-//                thumbnailAdapter.notifyItemChanged(position)
             }
         )
     }

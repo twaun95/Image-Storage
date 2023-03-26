@@ -2,7 +2,6 @@ package com.twaun95.data.local
 
 import com.twaun95.data.local.sharedPreference.ImageStorageSharedPreference
 import com.twaun95.domain.entity.LocalThumbnail
-import com.twaun95.domain.entity.Thumbnail
 import com.twaun95.domain.key.Key
 import javax.inject.Inject
 
