@@ -8,7 +8,6 @@ import com.twaun95.presentation.adapter.ThumbnailListAdapter
 import com.twaun95.presentation.base.BaseFragment
 import com.twaun95.presentation.databinding.FragmentSearchBinding
 import com.twaun95.presentation.dialog.CommonDialog
-import com.twaun95.presentation.ui.GridLayoutManager
 import com.twaun95.presentation.ui.MainActivityViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.launchIn
@@ -73,8 +72,27 @@ class SearchFragment : BaseFragment<FragmentSearchBinding, SearchFragmentViewMod
 
     private fun setRecyclerView() {
         binding.recyclerViewSearch.apply {
-            layoutManager = GridLayoutManager(requireContext())
-            adapter = thumbnailAdapter
+            layoutManager = SearchLayoutManager(requireContext())
+            adapter = thumbnailAdapter.apply {
+                onClick = {
+                    CommonDialog.show(
+                        parentFragmentManager,
+                        viewLifecycleOwner,
+                        "보관함에 저장하시겠습니까?",
+                        true,
+                        getString(R.string.cancel),
+                        {
+                            fragmentVM.deleteStorage(it)
+                            fragmentVM.getStorage()
+                        },
+                        getString(R.string.confirm),
+                        {
+                            fragmentVM.saveStorage(it)
+                            fragmentVM.getStorage()
+                        }
+                    )
+                }
+            }
         }
     }
 

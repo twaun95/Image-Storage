@@ -8,4 +8,7 @@ import com.twaun95.domain.entity.response.VideoSearchResponse
 
 interface SearchRepository {
     suspend fun getThumbnail() : List<Thumbnail>
+    fun getStorage() : List<Thumbnail>
+    fun addStorage(thumbnail: Thumbnail)
+    fun removeStorage(thumbnail: Thumbnail)
 }

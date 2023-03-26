@@ -1,9 +1,9 @@
 package com.twaun95.data.di
 
-import com.twaun95.data.dataSource.remote.image.ImageDataSource
-import com.twaun95.data.dataSource.remote.image.ImageDataSourceImpl
-import com.twaun95.data.dataSource.remote.video.VideoDataSource
-import com.twaun95.data.dataSource.remote.video.VideoDataSourceImpl
+import com.twaun95.data.remote.image.ImageDataSource
+import com.twaun95.data.remote.image.ImageDataSourceImpl
+import com.twaun95.data.remote.video.VideoDataSource
+import com.twaun95.data.remote.video.VideoDataSourceImpl
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
@@ -12,7 +12,7 @@ import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
-internal abstract class DataSourceModule {
+internal abstract class RemoteModule {
 
     @Binds
     @Singleton
