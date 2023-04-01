@@ -14,6 +14,13 @@ android {
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles("consumer-rules.pro")
+
+        buildConfigField("String", "API_KEY", com.android.build.gradle.internal.cxx.configure.gradleLocalProperties(
+            rootDir
+        ).getProperty("api_key"))
+        buildConfigField("String", "BASE_URL", com.android.build.gradle.internal.cxx.configure.gradleLocalProperties(
+            rootDir
+        ).getProperty("base_url"))
     }
 
     buildTypes {

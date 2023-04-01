@@ -1,5 +1,6 @@
 package com.twaun95.data.di
 
+import com.twaun95.data.BuildConfig
 import com.twaun95.data.service.SearchService
 import dagger.Module
 import dagger.Provides
@@ -16,9 +17,8 @@ import javax.inject.Singleton
 @Module
 @InstallIn(SingletonComponent::class)
 object NetworkModule {
-    private const val BASE_URL = "https://dapi.kakao.com/"
-    private const val API_KEY = "c4b1e0732095fd5d98eb9ec99460dcbc"
-    private const val AUTH_HEADER = "KakaoAK $API_KEY"
+    private const val BASE_URL = BuildConfig.BASE_URL
+    private const val AUTH_HEADER = BuildConfig.API_KEY
     private const val TIME_OUT_COUNT : Long = 30
 
     @Provides
