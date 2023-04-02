@@ -1,6 +1,6 @@
 # Image-Storage
 
-이미지 검색, 저장
+이미지 검색, 로컬 저장
 
 # Skills
 - Kotlin
@@ -9,7 +9,8 @@
 - JetPack(DataBinding, Hilt, LifeCycle)
 - Coroutine
 - Flow, LiveData
-- Retrofit, Image Glide, Lottie, Timber
+- SharedPreference
+- Retrofit, Glide, Timber
 - Leak Canary
 
 # Environment
